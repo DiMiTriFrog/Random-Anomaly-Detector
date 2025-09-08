@@ -43,6 +43,21 @@ rng-anomaly \
   --mpl-plot --mpl-bucket-sec 30 --mpl-window-min 60 --mpl-interval 0.5
 ```
 
+### TUI preview
+
+The following command opens the terminal UI exactly like the screenshot (big ASCII 1/0 on screen and live percentages at the bottom), and updates continuously while reading bits:
+
+```bash
+python3 -m rng_anomaly \
+  --source /dev/urandom --processes 12 \
+  --tui --tui-scale 2 --tui-gap 4 --pct-decimals 8 \
+  --quiet-json --no-limit \
+  --mpl-plot --mpl-bucket-sec 30 --mpl-window-min 60 --mpl-interval 0.5
+```
+
+- The green “1” and cyan “0” ASCII digits reflect the TUI mode.
+- The bottom line shows live percentages for 1s and 0s (e.g., ~50% each for unbiased sources).
+
 ## Notes
 
 - If matplotlib cannot be imported when `--mpl-plot` is enabled, plotting disables itself and a warning is printed.
