@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rng-anomaly — Documentation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/themes/vue.css" />
+    <style>
+      .lang-switch { position: fixed; top: 12px; right: 16px; z-index: 9999; display: flex; gap: 8px; align-items: center; background: rgba(255, 255, 255, 0.85); border: 1px solid rgba(0,0,0,0.08); border-radius: 6px; padding: 4px 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+      .lang-switch a { text-decoration: none; font-size: 18px; line-height: 1; }
+      .lang-switch a.active { filter: grayscale(0%); }
+      .lang-switch a.inactive { filter: grayscale(60%); opacity: 0.7; }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      function langTargets() {
+        var hash = location.hash || '#/';
+        var path = hash.replace(/^#\//, '');
+        if (!path) path = 'README.md';
+        var inES = /^es\//.test(path);
+        var core = inES ? path.replace(/^es\//, '') : path;
+        var enHash = '#/' + core;
+        var esHash = '#/es/' + core;
+        return { inES: inES, enHash: enHash, esHash: esHash };
+      }
+      function ensureLangSwitcher() {
+        var el = document.querySelector('.lang-switch');
+        if (!el) {
+          el = document.createElement('div');
+          el.className = 'lang-switch';
+          el.innerHTML = '<a id="en-link" title="English">🇬🇧</a><a id="es-link" title="Español">🇪🇸</a>';
+          document.body.appendChild(el);
+        }
+        var t = langTargets();
+        var en = document.getElementById('en-link');
+        var es = document.getElementById('es-link');
+        if (en && es) {
+          en.setAttribute('href', t.enHash);
+          es.setAttribute('href', t.esHash);
+          if (t.inES) {
+            es.classList.add('active'); es.classList.remove('inactive');
+            en.classList.add('inactive'); en.classList.remove('active');
+          } else {
+            en.classList.add('active'); en.classList.remove('inactive');
+            es.classList.add('inactive'); es.classList.remove('active');
+          }
+        }
+      }
+      window.$docsify = {
+        name: 'rng-anomaly',
+        loadSidebar: true,
+        subMaxLevel: 2,
+        search: 'auto',
+        plugins: [ function (hook, vm) { hook.ready(ensureLangSwitcher); hook.doneEach(ensureLangSwitcher); } ]
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-json.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
+  </body>
+  </html>
+
+

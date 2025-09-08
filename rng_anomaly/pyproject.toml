@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling>=1.18.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "rng-anomaly"
+version = "0.1.0"
+description = "Detector online de anomalías para flujos de bits de /dev/(u)random (RCT, APT, SPRT, Z)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "rng_anomaly maintainers" }
+]
+keywords = ["random", "rng", "anomaly", "statistics", "online"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "License :: OSI Approved :: MIT License",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Information Analysis",
+]
+dependencies = ["matplotlib>=3.7"]
+
+
+[project.scripts]
+rng-anomaly = "rng_anomaly.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["rng_anomaly"]
+
+
