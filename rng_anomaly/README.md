@@ -54,6 +54,10 @@ python3 -m rng_anomaly \
   --quiet-json --no-limit \
   --mpl-plot --mpl-bucket-sec 30 --mpl-window-min 60 --mpl-interval 0.5
 ```
+<img width="475" height="347" alt="Screenshot 2025-09-08 at 08 51 56" src="https://github.com/user-attachments/assets/c4ebff80-b698-4386-a22a-5e711b62503b" />
+<img width="495" height="615" alt="Screenshot 2025-09-08 at 09 39 41" src="https://github.com/user-attachments/assets/74c5b2a8-5c87-4d8f-8790-3fb0730b1b1a" />
+
+
 
 - The green “1” and cyan “0” ASCII digits reflect the TUI mode.
 - The bottom line shows live percentages for 1s and 0s (e.g., ~50% each for unbiased sources).
